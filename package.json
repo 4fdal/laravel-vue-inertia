@@ -7,7 +7,9 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "ssr-dev": "mix && mix --mix-config=webpack.ssr.mix.js && npm run ssr-serve",
+        "ssr-serve": "node public/js/ssr.js"
     },
     "devDependencies": {
         "@popperjs/core": "^2.10.2",
@@ -26,6 +28,9 @@
     "dependencies": {
         "@inertiajs/inertia": "^0.11.0",
         "@inertiajs/inertia-vue": "^0.8.0",
-        "vue-router": "^4.0.14"
+        "@inertiajs/server": "^0.1.0",
+        "vue-router": "^4.0.14",
+        "vue-server-renderer": "^2.6.14",
+        "webpack-node-externals": "^3.0.0"
     }
 }
