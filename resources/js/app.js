@@ -1,16 +1,13 @@
-require("./bootstrap");
-require("../sass/app.scss");
 import Vue from "vue";
+import { createInertiaApp } from "@inertiajs/inertia-vue";
 
-window.Vue = require("vue");
+createInertiaApp({
+    resolve: (name) => require(`./Pages/${name}`),
+    setup({ el, App, props, plugin }) {
+        Vue.use(plugin);
 
-// router
-import router from "./routers";
-
-window.router = router;
-window.Fire = new Vue();
-
-const app = new Vue({
-    el: "#app",
-    router,
-}).$mount("#app");
+        new Vue({
+            render: (h) => h(App, props),
+        }).$mount(el);
+    },
+});
